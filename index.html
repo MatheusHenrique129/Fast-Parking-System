@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAST PARKING - SGDATA</title>
+    <link rel="icon" href="imagens/icon.png">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="js/chama_modal.js"></script>
+</head>
+<body>
+    <!-- Seção Header -->
+    <div id="header">
+        <input type="checkbox" id="check">
+        <label for="check">
+            <i title="Menu" class="fas fa-ellipsis-h" id="menu-barra"></i>
+            <i title="Fechar" class="fas fa-times" id="cancel-menu"></i>
+        </label>
+        <div id="menu-lateral">
+            <div class="border-menu-lateral">
+
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" id="consultarCliente">Clientes</a></li>
+                    <li><a href="#" id="relatorios">Relatórios</a></li>
+                    <li><a href="#" id="cms">CMS</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="conteudo centerObject">
+            <div id="logo">
+                <img src="imagens/logo_header.png" alt="Logo do Site">
+            </div>
+            <div class="sair" onclick="sair()">
+                <p>Sair</p>
+            </div>
+        </div>
+    </div>
+
+    <!--SEÇÃO CADASTROS-->
+    <section id="clientes">
+        <!--CMS-->
+        <div id="index-cms" class="display conteudo centerObject">
+            <i class="fas fa-address-card icon-users"></i>
+            <h1>Gerenciamento do Sistema</h1>
+            <div class="containerCms">
+                <div id="conteudoCms" class="centerObject">
+                    <div class="informacoes-cms">
+                        <h1>CMS</h1>
+                        <h5>Administrar de uma forma simples</h5>
+                    </div>
+                    <form name="frmCms" id="segura-conteudocms">
+                        
+                        <div class="campo centerObject">
+                            <div class="cadastroInformacoes">
+                                <p> Valor Primeira Hora: </p>
+                            </div>
+                            <div class="cadastroEntradaDeDados">
+                                <i class="fas fa-grip-vertical icon-grip"></i>
+                                <input type="text" id="valorPrimeiraHora" name="valorPrimeiraHora" value="" placeholder="Valor da primeira hora" required>
+                            </div>
+                        </div>
+
+                        <div class="campo centerObject">
+                            <div class="cadastroInformacoes">
+                                <p> Valor Demais Horas: </p>
+                            </div>
+                            <div class="cadastroEntradaDeDados">
+                                <i class="fas fa-grip-vertical icon-grip"></i>
+                                <input type="text" id="valorDemaisHoras" name="valorDemaisHoras" value="" placeholder="Valor das demais horas" required>
+                            </div>
+                        </div>
+
+                        <div class="campo centerObject">
+                            <div class="cadastroInformacoes">
+                                <p> Qtde de Vagas: </p>
+                            </div>
+                            <div class="cadastroEntradaDeDados">
+                                <i class="fas fa-grip-vertical icon-grip"></i>
+                                <input type="text" id="qtde_de_vagas" name="qtde_de_vagas" value="" placeholder="Quantidade de vagas disponíveis" required>
+                            </div>
+                        </div>
+
+                        <div class="campo centerObject">
+                            <div class="cadastroInformacoes">
+                                <p> Desconto: </p>
+                            </div>
+                            <div class="cadastroEntradaDeDados">
+                                <i class="fas fa-grip-vertical icon-grip"></i>
+                                <input type="text" id="desconto" name="desconto" value="" placeholder="Desconto se houver" required>
+                            </div>
+                        </div>
+
+                        <div class="botaoCms">
+                            <input type="button" id="enviarCms" value="Enviar" class="button">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            
+            <!-- MOSTRAR REGISTRO -->
+            <div class="containerCms">
+                <div id="listagemCms" class="centerObject">
+
+                </div>
+            </div>
+        </div>
+
+        <!--SEÇÃO CLIENTES-->
+        <div id="index-cliente" class="conteudo centerObject">
+            <i class="fas fa-users icon-users"></i>
+            <h1>Clientes</h1>
+            <div class="container-infortions">
+                <button type="submit" name="btnCadastrar" value="Cadastrar" class="cadastrar" onclick="chamaModal()"><i class="fas fa-plus"></i>Cadastrar</button>
+                <!-- <form name="frmClientes" method="post" action="index.html" class="forms"> -->
+                <div class="forms">
+                    <table id='tbl-Clientes' class="tbl-estrutura centerObject">
+                        <tr class="colunas">
+                            <td class="info"><strong>Nome</strong></td>
+                            <td class="info"><strong>Placa</strong></td>
+                            <td class="info"><strong>Cor</strong></td>
+                            <td class="info"><strong>Horário de Entrada</strong></td>
+                            <td class="info"><strong>Ações</strong></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!--SEÇÃO RELATÓRIO-->
+        <div id="index-relatorio" class="conteudo centerObject">
+            <div class="container-relatorios">
+                <div class="container-comprovante centerObject">
+                    <div id="comprovante-text">
+                        <i class="far fa-check-circle icon-check"></i>
+                        <h2>Relatório</h2>
+                        <p>Agora você pode gerar Comprovantes</p>
+                    </div>
+                    <div class="campoRelatorio centerObject">
+                        <select id="chamaSelect" onchange="mudarRelatorio()">
+                            <option>Tipo de Relatório</option>
+                            <option value="Diaria">Diaria</option>
+                            <option value="Mensal">Mensal</option>
+                            <option value="Anual">Anual</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--SEÇÃO DIARIA-->
+                <div id="chamaDiaria" class="display seguraTblRelatorios">
+                    <div id="caixa-info-dataDiaria">
+
+                    </div>
+                    <table id="tblRelatorio" class="centerObject">
+                        <tr class="tr-relatorio">
+                            <td class="td-titulo">ID</td>
+                            <td class="td-titulo">Nome</td>
+                            <td class="td-titulo">Placa</td>
+                            <td class="td-titulo">Cor</td>
+                            <td class="td-titulo">Horário Entrada</td>
+                            <td class="td-titulo">Horário Saída</td>
+                            <td class="td-titulo">Valor Pago</td>
+                        </tr>
+                    </table>
+                    <div id="caixa-informacoes-importantes">
+
+                    </div>
+                </div>
+
+                <!--SEÇÃO MENSAL-->
+                <div id="chamaMensal" class="display seguraTblRelatorios">
+                    <div id="caixa-info-dataMensal">
+
+                    </div>
+                    <table id="tblRelatorioMensal" class="centerObject">
+                        <tr class="tr-relatorio">
+                            <td class="td-titulo">ID</td>
+                            <td class="td-titulo">Nome</td>
+                            <td class="td-titulo">Placa</td>
+                            <td class="td-titulo">Cor</td>
+                            <td class="td-titulo">Horário Entrada</td>
+                            <td class="td-titulo">Horário Saída</td>
+                            <td class="td-titulo">Valor Pago</td>
+                        </tr>
+                    </table>
+                    <div id="caixa-informacoes-importantesMensal">
+
+                    </div>
+                </div>
+
+                <!--SEÇÃO ANUAL-->
+
+                <div id="chamaAnual" class="display seguraTblRelatorios">
+                    <div id="caixa-info-dataAnual">
+
+                    </div>
+                    <table id="tblRelatorioAnual" class="centerObject">
+                        <tr class="tr-relatorio">
+                            <td class="td-titulo">ID</td>
+                            <td class="td-titulo">Ano</td>
+                            <td class="td-titulo">Qtde de Clientes</td>
+                            <td class="td-titulo">Cor do carro</td>
+                            <td class="td-titulo">Horário de entrada</td>
+                            <td class="td-titulo">Horario de saída</td>
+                            <td class="td-titulo">Valor Total</td>
+                        </tr>
+                    </table>
+                    
+                    <div id="caixa-informacoes-importantesAnual">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="containerModal">
+        <div onclick="fechaModal()" class="fechar-modal">X</div>
+        <div id="myModal" class="modal centerObject">
+
+            <div id="containerConteudo-modal">
+                <div class="conteudo-modal centerObject">
+                    <div class="textModal">
+                        <i class="fas fa-user-plus plus-modal"></i>
+                        <h1>Cadastre um Cliente</h1>
+                    </div>
+                    <form class="modal-cadastrar-cliente">
+
+                        <div class="campo centerObject">
+                            <div class="cadastroInformacoes">
+                                <p> Nome: </p>
+                            </div>
+                            <div class="cadastroEntradaDeDados">
+                                <i class="fas fa-grip-vertical icon-grip"></i>
+                                <input type="text" id="nomeCliente" name="txtNome" value="" placeholder="Digite um Nome" pattern="[a-z A-Z é]*" required>
+                            </div>
+                        </div>
+
+                        <div class="campo centerObject">
+                            <div class="cadastroInformacoes">
+                                <p> Placa: </p>
+                            </div>
+                            <div class="cadastroEntradaDeDados">
+                                <i class="fas fa-grip-vertical icon-grip"></i>
+                                <input type="text" id="placaCarro" name="txtPlaca" value="" placeholder="Digite a Placa" required>
+                            </div>
+                        </div>
+                        
+                        <div class="campo centerObject">
+                            <div class="cadastroInformacoes">
+                                <p> Cor do Carro: </p>
+                            </div>
+                            <div class="cadastroEntradaDeDados">
+                                <i class="fas fa-grip-vertical icon-grip"></i>
+                                <input type="text" id="corCarro" name="txtCorCarro" value="" required placeholder="Digite a cor do veículo" pattern="[a-z A-Z é]*">
+                            </div>
+                        </div>
+                    </form>
+
+                    <button id="buttonCadastrar">Cadastrar</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--SEÇÃO MODAL COMPROVANTE-->
+    <div id="containerModalComprovante" class="containerModalComprovante">
+
+    </div>
+    <!--SEÇÃO FOOTER-->
+    <footer class="container-footer">
+        <div class="conteudo centerObject">
+            <div class="fast-footer">
+                <h4>© FAST PARKING 2020</h4>
+            </div>
+            <div class="privacidade">
+                <p>Politica de Privacidade</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/atualizaConteudo.js"></script>
+    <script src="js/consumoApi.js"></script>
+    <script src="js/CMS.js"></script>
+    <script src="js/funcoesAuxiliares.js"></script>
+    <script src="js/relatorioDiario.js"></script>
+    <script src="js/relatorioMensal.js"></script>
+    <script src="js/relatorioAnual.js"></script>
+</body>
+
+</html>
