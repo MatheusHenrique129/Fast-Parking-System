@@ -87,9 +87,6 @@ function inserirCliente($dadosCliente){
             return false;
 
     }         
-    
-    
-
 }
 
 function excluirCliente($id){
@@ -123,8 +120,7 @@ function excluirCliente($id){
            else 
                return false;
            
-        }
-    
+        } 
 }
 
 function atualizarCliente($id){

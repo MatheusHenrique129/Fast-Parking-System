@@ -2,7 +2,7 @@
 /****************************************************************************************
     Objetivo: Arquivo para criar variaveis ou constantes que serão utilizados no projeto
     Data: 16/09/2020
-    Auto: Marcel
+    Auto: Matheus Henrique
 *****************************************************************************************/
 
 

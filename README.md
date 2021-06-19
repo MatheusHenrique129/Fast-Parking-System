@@ -3,6 +3,8 @@ versão atualizada do projeto integrado com relatórios na API
 
 ## Domínio da API:
 
+Baixar o XAMP e criar uma pasta de produção para rodar o projeto, por ser PHP.
+
 http://localhost/Matheus/Projeto-Integrado/ProjetoUpdated/api/api.php/
 
 

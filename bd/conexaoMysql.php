@@ -2,7 +2,7 @@
 /********************************************************
     Objetivo: Configuração para conectar no BD MySql
     Data: 16/09/2020
-    Autor: Matheus
+    Autor: Matheus Henrique
 *********************************************************/
 
 function conexaoMysql ()

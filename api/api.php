@@ -200,8 +200,7 @@ $app->delete('/clientes/{id}', function($request, $response, $args){
 
                             }
 
-                                  ');
-    
+                          ');
     }
 
 
